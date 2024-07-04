@@ -4,9 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.atmmachine</groupId>
+    <parent>
+        <artifactId>atmmachine</artifactId>
+        <groupId>com.atmmachine</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <artifactId>cashmachine-ui</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -17,6 +20,12 @@
         <dependency>
             <groupId>com.atmmachine</groupId>
             <artifactId>cashmachine-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atmmachine</groupId>
+            <artifactId>cashmachine-utils</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
