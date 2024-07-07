@@ -46,6 +46,7 @@ public class AtmRepositoryImpl implements AtmRepository {
 			System.out.println("Ошибка при сохранении данных: " + e.getMessage());
 		}
 	}
+
 	@Override
 	public void loadData() {
 		try (BufferedReader br = new BufferedReader(new FileReader(DATA_FILE))) {

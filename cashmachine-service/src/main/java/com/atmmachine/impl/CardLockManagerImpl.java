@@ -27,15 +27,21 @@ public class CardLockManagerImpl implements CardLockManager {
 		if (instance == null) {
 			instance = new CardLockManagerImpl();
 		}
+
 		return instance;
 	}
 
 	@Override
 	public void incrementFailedAttempts(String cardNumber) {
-		failedAttempts.put(cardNumber, failedAttempts.getOrDefault(cardNumber, 0) + 1);
-		if (failedAttempts.get(cardNumber) >= MAX_FAILED_ATTEMPTS) {
-			lockTime.put(cardNumber, System.currentTimeMillis());
+		if (isLocked(cardNumber)) {
+			return;
 		}
+		int attempts = failedAttempts.getOrDefault(cardNumber, 0) + 1;
+		if (attempts >= MAX_FAILED_ATTEMPTS) {
+			lockTime.put(cardNumber, System.currentTimeMillis());
+			attempts = MAX_FAILED_ATTEMPTS;
+		}
+		failedAttempts.put(cardNumber, attempts);
 		saveFailedAttempts();
 	}
 

@@ -56,7 +56,6 @@ public class AccountServiceImpl implements AccountService {
 		}
 	}
 
-
 	@Override
 	public void deposit(String cardNumber, double amount) {
 		if (isCardLocked(cardNumber)) {
@@ -113,6 +112,7 @@ public class AccountServiceImpl implements AccountService {
 		} else {
 			incrementFailedAttempts(cardNumber);
 		}
+		System.out.println("Не правильный пароль.");
 
 		return false;
 	}
@@ -121,7 +121,6 @@ public class AccountServiceImpl implements AccountService {
 	public boolean isCardLocked(String cardNumber) {
 		return cardLockManager.isLocked(cardNumber);
 	}
-
 
 	private Account getAccountByCardNumber(String cardNumber) {
 		return accountRepository.getAccount(cardNumber);
